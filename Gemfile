@@ -22,4 +22,5 @@ end
 group :test, :development do
   gem 'rspec-rails'
   gem 'shoulda'
+  gem 'sqlite3'
 end
