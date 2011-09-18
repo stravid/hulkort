@@ -8,6 +8,14 @@
 </head>
 <body>
 
+<% if signed_in? %>
+  Logged in as <%= current_user.email %> | 
+  <%= link_to "Account Settings", edit_user_path(current_user) %> | 
+  <%= link_to "Sign out", sign_out_path, :method => :delete %>
+<% else %>
+  <%= link_to "Sign in", sign_in_path %>
+<% end %>
+
 <% flash.each do |key, value| -%>
   <div class="flash <%= key %>"><%= value %></div>
 <% end -%>

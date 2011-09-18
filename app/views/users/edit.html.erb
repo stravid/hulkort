@@ -1,0 +1,5 @@
+<%= form_for(current_user) do |form| %>
+  <%= form.label :time_zone, "Time zone" %>
+  <%= form.time_zone_select :time_zone, ActiveSupport::TimeZone.all %>
+  <%= form.submit "Save" %>
+<% end %>

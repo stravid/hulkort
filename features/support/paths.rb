@@ -12,12 +12,14 @@ module NavigationHelpers
       '/'
 
     when /the sign up page/i
-          sign_up_path
+      sign_up_path
     when /the sign in page/i
       sign_in_path
     when /the password reset request page/i
       new_password_path
-          
+    when /my account page/i
+      edit_user_path(current_user)
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
