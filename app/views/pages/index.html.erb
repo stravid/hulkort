@@ -1,50 +1,44 @@
-<h2>What is Hulkort?</h2>
+<h2>Hulkort gives you personal Git commit statistics!</h2>
 <p>
-  It tracks your personal Git commit statistics!
-  <br>
-  If you already have an account just <%= link_to "sign in", sign_in_path %>, otherwise <%= link_to "sign up", sign_up_path %> to view your statistics.
+  To start tracking your commits just make a <code>POST</code> request to following URL every time you commit:
+  <code>http://hulkort.herokuapp.com/api/commit?123asdß08234dgdfa340df</code>
+</p>
+<p>
+  This is just an example, to see your personal URL and API key just <%= link_to "sign in", sign_in_path %> in!
 </p>
 
-
-<h2>How does it work?</h2>
+<h2>This is lame I don't want to do this every time by hand.</h2>
 <p>
-  In order to track your commit statistics you just ping Hulkort every time you commit.
+  Thank god Git has so called <a href="">Git-Hooks</a>! A Git hook is simply put a little script which is executed automatically every time you use a certain Git command.
 </p>
-<code>
-  http://hulkort.herokuapp.com/api/commit?123asdß08234dgdfa340df
-</code>
 <p>
-  That's the url you have to ping. The weird hash at the end is your API key so we can be sure it's you we are talking to.
-  <br>
-  <%= link_to "Sign in", sign_in_path %> to view your API key!
-</p>
-
-<p>
-  Doing this every time by hand is lame. Let us show you the magic of Git-Hooks.
-</p>
-
-<p>
-  We use the post-commit hook to automatically ping Hulkort every time you commit. If you want to know more about Git-Hooks you can
-  read about it <a href="#">here</a>.
-</p>
-
-<p>
-  The post-commit hook we are using are the three lines below. Create a new new file with these lines. Save it anywhere on your development machine and name it "post-commit".
-</p>
-<code>
-#!/bin/bash
-
-wget --spider -q http://hulkort.herokuapp.com/api/commit?123asdß08234dgdfa340df
-</code>
-
-<p>
-  The next step is to link this file into your global Git-Hooks folder so Git can pick it up every time you run "git init".
+  With the help of a <code>post-commit</code> hook and Hulkort you can easily track your Git commits, here is how:
 </p>
 <pre>
-$ cd /usr/share/git-core/templates/hooks/
-$ ln -s /home/david/git-hooks/post-commit post-commit
+$ # Create the post-commit hook somewhere
+$ mkdir ~/development/git-hooks
+$ cd ~/development/git-hooks
+$ echo "#!/bin/bash" >> post-commit
+$ echo "wget --spider -q http://hulkort.herokuapp.com/api/commit?123asdß08234dgdfa340df
+" >> post-commit
+$ # Find the folder where Git stores it's templates
+$ # A good place to start looking is '/usr/share/git-core/'
+$ find /usr -type d -name "hooks"
+/usr/share/git-core/templates/hooks
+$ cd /usr/share/git-core/templates/hooks
+$ # Link the post-commit hook into your template hooks
+$ ln -s ~/development/git-hooks/post-commit post-commit
 </pre>
+<p>
+  From this moment on all new Git repositories you create will have the hook and will therefore track your commits. To add the hook to an already existing repository you just have to run <code>git init</code> in the repository again. Git will re-initialize the repository and copy the <code>post-commit</code> hook.
+</p>
+
+<h2>I don't understand what I just did.</h2>
 
 <p>
-  Done! Every time you run "git init" Git will copy the linked post-commit hook into the repository. That's also how you can add the hook to an existing repository, just re-initialize the repository with "git init" to copy the hook.
+  A Git hook has to be in the <code>.git/hooks</code> directory of your repository. Nobody wants to add the <code>post-commit</code> hook by hand to every new repository. So instead we use a template and let Git do all the work.
+</p>
+
+<p>
+  Whenever you run git init Git will copy the template files into the repositorys <code>.git</code> directory. So all we have to do is place our <code>post-commit</code> hook in the <code>git-core/templates/hooks</code> directory. To make things clean we just link it, this way we can easily edit the hook anytime.
 </p>
