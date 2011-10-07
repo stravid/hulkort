@@ -6,5 +6,5 @@ I can read about Hulkort
 
 Scenario: Visitor visits Hulkort
   Given I am on the homepage
-  Then I should see "What is Hulkort?"
-  And I should see "How does it work?"
+  Then I should see "just sign in"
+  And I should see "This is lame"
