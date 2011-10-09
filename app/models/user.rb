@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   attr_accessible :time_zone, :email, :password
   validates :api_key, :uniqueness => true
 
+  has_many :commits
+
   private
 
   def generate_api_key

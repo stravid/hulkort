@@ -5,6 +5,7 @@ describe User do
 
   it { should have_db_index(:api_key).unique(true) }
   it { should_not allow_mass_assignment_of(:api_key) }
+  it { should have_many(:commits) }
 
   it "should be able to create a valid user" do
     @user.should be_valid
