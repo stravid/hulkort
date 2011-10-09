@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110918161528) do
+ActiveRecord::Schema.define(:version => 20111008161807) do
 
   create_table "users", :force => true do |t|
     t.string   "email"
@@ -22,8 +22,10 @@ ActiveRecord::Schema.define(:version => 20110918161528) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "time_zone"
+    t.string   "api_key"
   end
 
+  add_index "users", ["api_key"], :name => "index_users_on_api_key", :unique => true
   add_index "users", ["email"], :name => "index_users_on_email"
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
 
