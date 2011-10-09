@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   include Clearance::User
+  # use before_validation because before_create somehow breaks uniqueness in test env
   before_validation :generate_api_key, :if => "self.new_record?"
 
   attr_accessible :time_zone, :email, :password

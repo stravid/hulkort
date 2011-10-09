@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe User do
-  before(:each) { @user = FactoryGirl.create(:user) }
+  before(:all) { @user = FactoryGirl.create(:user) }
 
   it { should have_db_index(:api_key).unique(true) }
   it { should_not allow_mass_assignment_of(:api_key) }
