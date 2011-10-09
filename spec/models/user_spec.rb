@@ -18,4 +18,11 @@ describe User do
     @user.api_key.should match /^[a-z0-9]{24}$/
   end
 
+  it "should validate uniqueness of api_key" do
+    user = FactoryGirl.create(:user)
+    user.api_key = @user.api_key
+    user.save.should  == false
+    user.errors[:api_key].should == ["has already been taken"]
+  end
+
 end
