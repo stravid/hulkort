@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe User do
-  before(:all) { @user = FactoryGirl.create(:user) }
+  before(:each) { @user = FactoryGirl.create(:user) }
 
   it { should have_db_index(:api_key).unique(true) }
   it { should_not allow_mass_assignment_of(:api_key) }
@@ -16,6 +16,13 @@ describe User do
 
   it "should require api_key to match a SHA1 with length 24" do
     @user.api_key.should match /^[a-z0-9]{24}$/
+  end
+
+  it "should validate uniqueness of api_key" do
+    user = FactoryGirl.create(:user)
+    user.api_key = @user.api_key
+    user.save.should  == false
+    user.errors[:api_key].should == ["has already been taken"]
   end
 
 end
