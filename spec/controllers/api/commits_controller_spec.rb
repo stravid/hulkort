@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 describe Api::CommitsController do
-  describe "A valid API user" do
-    it "Can create a new commit" do
+  describe "a valid API user" do
+    it "can create a new commit" do
       user = FactoryGirl.create(:user)
       old_commit_count = user.commits.count
 
@@ -13,14 +13,14 @@ describe Api::CommitsController do
     end
   end
 
-  describe "A invalid API user" do
-    it "Can't create a new commit without an API key" do
+  describe "a invalid API user" do
+    it "can't create a new commit without an API key" do
       post :create
 
       response.should be_error
     end
 
-    it "Can't create a new commit with an invalid API key" do
+    it "can't create a new commit with an invalid API key" do
       post :create, :api_key => 'abcdefgh12345678'
 
       response.should be_error
