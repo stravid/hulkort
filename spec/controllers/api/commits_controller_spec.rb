@@ -14,8 +14,14 @@ describe Api::CommitsController do
   end
 
   describe "A invalid API user" do
-    it "Can't create a new commit" do
+    it "Can't create a new commit without an API key" do
       post :create
+
+      response.should be_error
+    end
+
+    it "Can't create a new commit with an invalid API key" do
+      post :create, :api_key => 'abcdefgh12345678'
 
       response.should be_error
     end
