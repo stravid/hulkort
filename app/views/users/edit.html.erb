@@ -3,3 +3,4 @@
   <%= form.time_zone_select :time_zone, ActiveSupport::TimeZone.all %>
   <%= form.submit "Save" %>
 <% end %>
+<p>API key: <%= current_user.api_key %></p>
