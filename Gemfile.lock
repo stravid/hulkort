@@ -89,7 +89,6 @@ GEM
     guard-spork (0.3.1)
       guard (>= 0.8.4)
       spork (>= 0.8.4)
-    high_voltage (1.0.1)
     hike (1.2.1)
     i18n (0.6.0)
     jquery-rails (1.0.14)
@@ -197,7 +196,6 @@ DEPENDENCIES
   guard-cucumber
   guard-rspec
   guard-spork
-  high_voltage
   jquery-rails
   launchy
   pg

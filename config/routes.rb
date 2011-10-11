@@ -1,9 +1,9 @@
 Hulkort::Application.routes.draw do
-  resources :users, :only => [:edit, :update]
+  resources :users, :only => [:edit, :update, :show]
 
   namespace :api do
     resources :commits, :only => [:create]
   end
 
-  root :to => 'high_voltage/pages#show', :id => 'index'
+  root :to => 'pages#index'
 end
