@@ -4,7 +4,6 @@ gem 'rails', '3.1.0'
 gem 'jquery-rails'
 gem 'pg'
 gem 'clearance'
-gem 'high_voltage'
 gem 'rack', '1.3.3' # limit version to 1.3.3 because of warning in v 1.3.4
 
 group :assets do
