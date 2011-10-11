@@ -1,1 +1,6 @@
 <h1>Your Statistics</h1>
+<ul>
+<% @commits.each do |commit| %>
+  <li>commited at <%= commit.created_at.strftime('%I:%M%p on %e %B, %Y') %>, (No. <%= commit.id %>)</li>
+<% end %>
+</ul>
