@@ -1,11 +1,20 @@
+<% if current_user.present? %>
+  <% display_api_key = current_user.api_key %>
+<% else %>
+  <% display_api_key = "3695627b56d99b0eb392131d" %>
+<% end %>
+
 <h2>Hulkort gives you personal Git commit statistics!</h2>
 <p>
   To start tracking your commits just make a <code>POST</code> request to following URL every time you commit:
-  <code>http://hulkort.herokuapp.com/api/commit?123asdß08234dgdfa340df</code>
+  <code>http://hulkort.herokuapp.com/api/commits/?api_key=<%= display_api_key %></code>
 </p>
-<p>
-  This is just an example, to see your personal URL and API key just <%= link_to "sign in", sign_in_path %> in!
-</p>
+
+<% unless current_user.present? %>
+  <p>
+    This is just an example, to see your personal URL and API key just <%= link_to "sign in", sign_in_path %> in!
+  </p>
+<% end %>
 
 <h2>This is lame I don't want to do this every time by hand.</h2>
 <p>
@@ -19,7 +28,7 @@ $ # Create the post-commit hook somewhere
 $ mkdir ~/development/git-hooks
 $ cd ~/development/git-hooks
 $ echo "#!/bin/bash" >> post-commit
-$ echo "wget --spider -q http://hulkort.herokuapp.com/api/commit?123asdß08234dgdfa340df
+$ echo "wget --spider -q http://hulkort.herokuapp.com/api/commits/?api_key=<%= display_api_key %>
 " >> post-commit
 $ # Find the folder where Git stores it's templates
 $ # A good place to start looking is '/usr/share/git-core/'

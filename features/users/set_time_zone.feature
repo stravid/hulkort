@@ -4,7 +4,7 @@ Feature: Users can set their time zone.
   I can set my time zone
 
 Scenario: User sets time zone
-  Given I am signed in as a user
+  Given I am signed in as a user using "mail@example.com"
   And I follow "Account Settings"
   And I select "Amsterdam" from "Time zone"
   And I press "Save"
