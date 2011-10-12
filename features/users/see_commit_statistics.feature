@@ -9,5 +9,12 @@ Scenario:
   And I am on the homepage
   When I follow "Statistics"
   Then I should see "Your Statistics"
-  And I should see a list containing all my commits
+  And I should see a list containing my commits
+
+Scenario:
+  Given I am signed in as a user using "mail@example.com"
+  And I have 0 commits
+  And I am on the homepage
+  When I follow "Statistics"
+  Then I should see "We didn´t track any data"
   

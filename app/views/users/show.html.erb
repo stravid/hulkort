@@ -1,6 +1,11 @@
 <h1>Your Statistics</h1>
+<% if !@commits.empty? %>
+<p>During the last <%= @timelimit %> days you did exactly <%= @commits.count %> commits.</p>
+<% else %>
+<p>We didn´t track any data of you during the last <%= @timelimit %> days. So give it a try, or just begin again.</p>
+<% end %>
 <ul>
 <% @commits.each do |commit| %>
-  <li>commited at <%= commit.created_at.strftime('%I:%M%p on %e %B, %Y') %>, (No. <%= commit.id %>)</li>
+  <li>commited at <%= commit.created_at.strftime('%I:%M%p on %e %B, %Y') %></li>
 <% end %>
 </ul>

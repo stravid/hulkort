@@ -3,7 +3,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @commits = current_user.commits.order(:created_at).reverse_order
+    @timelimit = 30
+    @commits = current_user.commits.limit_time_to(@timelimit.days.ago).order(:created_at).reverse_order
   end
 
   def update

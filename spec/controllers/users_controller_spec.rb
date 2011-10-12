@@ -7,7 +7,7 @@ describe UsersController do
     it "fetches all commits which belong to the current user" do
       4.times { FactoryGirl.create(:user).commits.create }
       7.times { @current_user.commits.create }
-      @current_user.commits.count.should == 7
+      @current_user.commits.count.should equal(7)
     end
   end
 
