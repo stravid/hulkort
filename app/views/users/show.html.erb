@@ -1,8 +1,8 @@
 <h2>Your Statistics</h2>
 <% if !@commits.empty? %>
-<p>During the last <%= @timelimit %> days you did exactly <%= @commits.count %> commits.</p>
+<p>During the last <%= @time_limit %> days you did exactly <%= @commits.count %> commits.</p>
 <% else %>
-<p>We didn´t track any data of you during the last <%= @timelimit %> days. So give it a try, or just begin again.</p>
+<p>We didn´t track any data of you during the last <%= @time_limit %> days. So give it a try, or just begin again.</p>
 <% end %>
 <ul>
 <% @commits.each do |commit| %>
