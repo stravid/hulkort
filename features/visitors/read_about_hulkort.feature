@@ -5,5 +5,4 @@ Feature: Visitors can read about Hulkort
 
 Scenario: Visitor visits Hulkort
   Given I am on the homepage
-  Then I should see "just sign in"
-  And I should see "This is lame"
+  Then I should see "This is an example!"
