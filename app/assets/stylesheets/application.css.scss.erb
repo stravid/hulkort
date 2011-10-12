@@ -1,0 +1,213 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require normalize
+ *= require_self
+ *= require_tree . 
+*/
+
+$blue: #365673;
+$light-blue: #99B8BF;
+$grey-blue: #64798C;
+
+/* Selection colours (easy to forget) */
+::selection     {background: rgb(255,255,158);}
+::-moz-selection  {background: rgb(255,255,158);}
+img::selection    {background: transparent;}
+img::-moz-selection {background: transparent;}
+body {-webkit-tap-highlight-color: rgb(255,255,158);}
+
+/*    Default Layout: 992px. 
+    Gutters: 24px.
+    Outer margins: 48px.
+    Leftover space for scrollbars @1024px: 32px.
+-------------------------------------------------------------------------------
+cols    1     2      3      4      5      6      7      8      9      10
+px      68    160    252    344    436    528    620    712    804    896    */
+
+body {
+  width: 896px;
+  padding: 0px 48px 84px 48px;
+  margin: 0 auto;
+  background-image: url(<%= asset_path('background.png') %>);
+  background-color: #F2E9D8;
+  -webkit-text-size-adjust: 100%;
+
+  font-size: 20px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+nav#user-navigation {
+  float: right;
+  color: rgba(27, 43, 57, 1);
+  font-weight: 200;
+  margin-top: 12px;
+}
+
+h2 {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 32px;
+  font-weight: 400;
+  color: $blue;
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 24px;
+  margin-top: 48px;
+}
+
+p {
+  margin: 0;
+  margin-bottom: 12px;
+  margin-top: 12px;
+}
+
+h1 {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 48px;
+  font-weight: 800;
+  color: $blue;
+  text-transform: uppercase;
+}
+
+pre {
+  background-color: rgba(27, 43, 57, 0.05);
+  color: #252525;
+  padding: 12px;
+  font-size: 16px;
+  font-family: monospace, serif;
+  border: 1px solid rgba(27, 43, 57, 0.25);
+
+  span {
+    opacity: 0.6;
+  }
+}
+
+code {
+  background-color: rgba(27, 43, 57, 0.05);
+  color: #252525;
+  padding: 2px;
+  border: 1px solid rgba(27, 43, 57, 0.25);
+}
+
+a {
+  color: $blue;
+}
+
+a:link, a:visited {
+  color: $blue;
+}
+
+a:hover, a:active {
+  color: $light-blue;
+}
+
+form {
+  margin-top: 24px;
+
+  label {
+    width: 200px;
+    display: block;
+    color: rgba(27, 43, 57, 1);
+    font-weight: 200;
+  }
+
+  input[type=email], input[type=password], select {
+    border: 1px solid rgba(27, 43, 57, 0.25);
+    padding: 6px;
+    margin-bottom: 18px;
+    margin-top: 6px;
+    font-weight: 400;
+    font-family: 'Open Sans', sans-serif;
+  }
+
+  input[type=submit] {
+    border: 1px solid rgba(27, 43, 57, 0.25);
+    padding: 6px;
+    color: rgba(27, 43, 57, 1);
+    font-weight: 500;
+    font-weight: 400;
+    font-family: 'Open Sans', sans-serif;
+
+    &:hover {
+      background-color: $blue;
+      color: rgba(255, 255, 255, 1);
+    }
+  }
+}
+
+ul {
+  list-style-type: square;
+  color: rgba(27, 43, 57, 1);
+}
+
+div.flash {
+  border: 1px solid rgba(27, 43, 57, 0.25);
+  background-color: rgba(255, 0, 0, 0.5);
+  padding: 12px;
+  margin: 24px;
+  color: rgba(27, 43, 57, 1);
+  font-weight: 200;
+}
+
+p#api-key {
+  color: rgba(27, 43, 57, 1);
+  font-weight: 200;
+  margin-top: 24px;
+}
+
+
+/*    Tablet Layout: 768px.
+    Gutters: 24px.
+    Outer margins: 28px.
+    Inherits styles from: Default Layout.
+-----------------------------------------------------------------
+cols    1     2      3      4      5      6      7      8
+px      68    160    252    344    436    528    620    712    */
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  
+  body {
+    width: 712px;
+    padding: 48px 28px 60px;
+  }
+}
+
+
+
+/*    Mobile Layout: 320px.
+    Gutters: 24px.
+    Outer margins: 34px.
+    Inherits styles from: Default Layout.
+---------------------------------------------
+cols    1     2      3
+px      68    160    252    */
+
+@media only screen and (max-width: 767px) {
+  
+  body {
+    width: 252px;
+    padding: 48px 34px 60px;
+  }
+  
+}
+
+
+
+/*    Wide Mobile Layout: 480px.
+    Gutters: 24px.
+    Outer margins: 22px.
+    Inherits styles from: Default Layout, Mobile Layout.
+------------------------------------------------------------
+cols    1     2      3      4      5
+px      68    160    252    344    436    */
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+  
+  body {
+    width: 436px;
+    padding: 36px 22px 48px;
+  }
+  
+}

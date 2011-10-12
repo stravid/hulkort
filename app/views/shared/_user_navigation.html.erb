@@ -1,0 +1,10 @@
+<nav id="user-navigation">
+  <% if signed_in? %>
+    <%= link_to "Home", root_path(:ignore_commits => true) %> |
+    <%= link_to "Statistics", user_path(current_user) %> |
+    <%= link_to "Account Settings", edit_user_path(current_user) %> | 
+    <%= link_to "Sign out", sign_out_path, :method => :delete %>
+  <% else %>
+    <%= link_to "Sign in", sign_in_path %>
+  <% end %>
+</nav>

@@ -4,50 +4,50 @@
   <% display_api_key = "3695627b56d99b0eb392131d" %>
 <% end %>
 
-<h2>Hulkort gives you personal Git commit statistics!</h2>
+<h2>Personal Git Commit Statistics</h2>
 <p>
-  To start tracking your commits just make a <code>POST</code> request to following URL every time you commit:
-  <code>http://hulkort.herokuapp.com/api/commits/?api_key=<%= display_api_key %></code>
+  Simply make a <code>POST</code> request to track your commits:
 </p>
-
+<pre>http://hulkort.herokuapp.com/api/commits/?api_key=<%= display_api_key %></pre>
 <% unless current_user.present? %>
   <p>
-    This is just an example, to see your personal URL and API key just <%= link_to "sign in", sign_in_path %> in!
+    This is an example! Please <%= link_to "sign in", sign_in_path %> to see your personal URL and API key.
   </p>
 <% end %>
 
-<h2>This is lame I don't want to do this every time by hand.</h2>
+<h2>Let's automate this!</h2>
 <p>
-  Thank god Git has so called <a href="">Git-Hooks</a>! A Git hook is simply put a little script which is executed automatically every time you use a certain Git command.
-</p>
-<p>
-  With the help of a <code>post-commit</code> hook and Hulkort you can easily track your Git commits, here is how:
+  Git has so called <a href="http://book.git-scm.com/5_git_hooks.html">Git Hooks</a>! Simply put a hook is a script which is executed every time you use a certain git command. With the help of a <code>post-commit</code> hook it's easy to ping the Hulkort API automatically:
 </p>
 <pre>
-$ # Create the post-commit hook somewhere
-$ mkdir ~/development/git-hooks
-$ cd ~/development/git-hooks
-$ echo "#!/bin/bash" >> post-commit
-$ echo "wget --spider -q http://hulkort.herokuapp.com/api/commits/?api_key=<%= display_api_key %>
-" >> post-commit
-$ # Find the folder where Git stores it's templates
-$ # A good place to start looking is '/usr/share/git-core/'
-$ find /usr -type d -name "hooks"
+<span># Create the post-commit hook somewhere</span>
+mkdir ~/development/git-hooks
+cd ~/development/git-hooks
+echo "#!/bin/bash" >> post-commit
+echo "wget --spider -q http://hulkort.herokuapp.com/api/commits/?api_key=<%= display_api_key %>" >> post-commit
+
+<span># Find the folder where Git stores it's templates</span>
+<span># A good place to start looking is '/usr/share/git-core/'</span>
+find /usr -type d -name "hooks"
 /usr/share/git-core/templates/hooks
-$ cd /usr/share/git-core/templates/hooks
-$ # Link the post-commit hook into your template hooks
-$ ln -s ~/development/git-hooks/post-commit post-commit
+
+<span># Link the post-commit hook into your template hooks</span>
+cd /usr/share/git-core/templates/hooks
+ln -s ~/development/git-hooks/post-commit post-commit
 </pre>
 <p>
-  From this moment on all new Git repositories you create will have the hook and will therefore track your commits. To add the hook to an already existing repository you just have to run <code>git init</code> in the repository again. Git will re-initialize the repository and copy the <code>post-commit</code> hook.
+  From now on all new Git repositories you create will have the hook and will therefore track your commits. To add the hook to an already existing repository you just run <code>git init</code> again. Git will re-initialize the repository and copy the <code>post-commit</code> hook.
 </p>
 
-<h2>I don't understand what I just did.</h2>
+<h2>What happened?</h2>
 
 <p>
-  A Git hook has to be in the <code>.git/hooks</code> directory of your repository. Nobody wants to add the <code>post-commit</code> hook by hand to every new repository. So instead we use a template and let Git do all the work.
+  In order to get executed a hook has to be in the <code>.git/hooks</code> directory of the repository. Nobody wants to add the <code>post-commit</code> hook by hand to every new repository. Instead we use a template and let Git do all the work.
 </p>
 
 <p>
-  Whenever you run git init Git will copy the template files into the repositorys <code>.git</code> directory. So all we have to do is place our <code>post-commit</code> hook in the <code>git-core/templates/hooks</code> directory. To make things clean we just link it, this way we can easily edit the hook anytime.
+  Whenever you run <code>git init</code> Git will copy the template files into the repositorys <code>.git</code> directory.
+</p>
+<p>
+  So all we have to do is place our <code>post-commit</code> hook in the <code>git-core/templates/hooks</code> directory. To make things clean we just link it, this way we can easily edit the hook anytime.
 </p>
