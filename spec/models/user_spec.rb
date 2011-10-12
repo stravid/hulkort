@@ -12,7 +12,7 @@ describe User do
   end
 
   it "has an API key after creation" do
-    @user.api_key.should_not == nil
+    @user.api_key.should_not be_nil
   end
 
   it "should require api_key to match a SHA1 with length 24" do
@@ -22,8 +22,8 @@ describe User do
   it "should validate uniqueness of api_key" do
     user = FactoryGirl.create(:user)
     user.api_key = @user.api_key
-    user.save.should  == false
-    user.errors[:api_key].should == ["has already been taken"]
+    user.save.should be_false
+    user.errors[:api_key].should eql(["has already been taken"])
   end
 
 end
