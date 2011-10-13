@@ -24,7 +24,7 @@
 mkdir ~/development/git-hooks
 cd ~/development/git-hooks
 echo "#!/bin/bash" >> post-commit
-echo "wget --spider -q http://hulkort.herokuapp.com/api/commits/?api_key=<%= display_api_key %>" >> post-commit
+echo "curl -d 'api_key=<%= display_api_key %>' http://hulkort.herokuapp.com/api/commits" >> post-commit
 
 <span># Find the folder where Git stores it's templates</span>
 <span># A good place to start looking is '/usr/share/git-core/'</span>
