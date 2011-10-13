@@ -6,4 +6,6 @@ Hulkort::Application.routes.draw do
   end
 
   root :to => 'pages#index'
+
+  match '/sign_out' => 'sessions#destroy', :via => :delete, :as => 'sign_out'
 end

@@ -1,29 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8"/>
+
   <title>Hulkort</title>
+
   <%= stylesheet_link_tag    "application" %>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,800,600,700,300' rel='stylesheet' type='text/css'>
   <%= javascript_include_tag "application" %>
+
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <%= csrf_meta_tags %>
 
   <%= render 'shared/google_analytics' %>
 </head>
-<body>
+<body lang="en">
 
-<% if signed_in? %>
-  Logged in as <%= current_user.email %> | 
-  <%= link_to "Statistics", user_path(current_user) %> |
-  <%= link_to "Account Settings", edit_user_path(current_user) %> | 
-  <%= link_to "Sign out", sign_out_path, :method => :delete %>
-<% else %>
-  <%= link_to "Sign in", sign_in_path %>
-<% end %>
+  <%= render 'shared/user_navigation' %>
 
-<% flash.each do |key, value| -%>
-  <div class="flash <%= key %>"><%= value %></div>
-<% end -%>
+  <h1>Hulkort</h1>
 
-<%= yield %>
+  <section id="content">
+    <%= yield %>
+  </section>
+
+  <% flash.each do |key, value| -%>
+    <div class="flash <%= key %>"><%= value %></div>
+  <% end -%>
 
 </body>
 </html>
