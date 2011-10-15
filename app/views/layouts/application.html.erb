@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8"/>
-
   <title>Hulkort</title>
+
+  <meta charset="utf-8">
+  <meta name="author" content="David Strauß">
+  <meta name="author" content="Thomas Buchöster">
+  <meta name="description" content="Hulkort helps you tracking your personal Git commit statistics.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= csrf_meta_tags %>
 
   <%= stylesheet_link_tag    "application" %>
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,800,600,700,300' rel='stylesheet' type='text/css'>
@@ -12,9 +17,6 @@
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
-
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <%= csrf_meta_tags %>
 
   <%= render 'shared/google_analytics' %>
 </head>
