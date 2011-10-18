@@ -4,17 +4,16 @@ gem 'rails'
 gem 'jquery-rails'
 gem 'pg'
 gem 'clearance'
-gem 'rack', '1.3.3' # limit version to 1.3.3 because of warning in v 1.3.4
 gem 'airbrake'
 
 group :assets do
-  gem 'sass-rails', "  ~> 3.1.0"
-  gem 'coffee-rails', "~> 3.1.0"
+  gem 'sass-rails'
+  gem 'coffee-rails'
   gem 'uglifier'
 end
 
 group :test do
-  gem 'turn', :require => false
+  gem 'turn', '< 0.8.3', :require => false # Turn v0.8.3 has a wrong dependency on minitest
   gem 'capybara'
   gem 'launchy'
   gem 'cucumber-rails', "~>1.1.0"
