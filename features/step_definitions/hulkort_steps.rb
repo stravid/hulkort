@@ -22,3 +22,11 @@ end
 Then /^I should see a list containing my commits$/ do
   page.should have_selector('ul li', :count => @current_user.commits.count)
 end
+
+Then /^I should see my commits graph$/ do
+  page.should have_selector('div#user-commits-graph')
+end
+
+Then /^I should see the global commits graph$/ do
+  page.should have_selector('div#global-commits-graph')
+end

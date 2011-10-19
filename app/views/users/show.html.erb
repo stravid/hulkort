@@ -1,11 +1,31 @@
 <h2>Your Statistics</h2>
-<% if !@commits.empty? %>
+<% unless @commits.empty? %>
+<p>
+  Total Commits: <%= @user_commit_count %>
+</p>
+<div id="user-commits-graph">
+  <% @user_daily_commits.each do |day| %>
+    <div style="height: <%= day['count'] * 5 + 1 %>px;"></div>
+  <% end %>
+</div>
+
+<h2>Global Statistics</h2>
+<p>
+  Total Commits: <%= @global_commit_count %>
+</p>
+<div id="global-commits-graph">
+  <% @global_daily_commits.each do |day| %>
+    <div style="height: <%= day['count'] * 5 + 1 %>px;"></div>
+  <% end %>
+</div>
+
+<h2>Commits Log</h2>
 <p>During the last <%= @time_limit %> days you did exactly <%= @commits.count %> commits.</p>
 <% else %>
 <p>We didn´t track any data of you during the last <%= @time_limit %> days. So give it a try, or just begin again.</p>
 <% end %>
 <ul>
 <% @commits.each do |commit| %>
-  <li>commited at <%= commit.created_at.strftime('%I:%M%p on %e %B, %Y') %></li>
+  <li><%= commit.created_at.strftime('%I:%M%p on %e %B, %Y') %></li>
 <% end %>
 </ul>
