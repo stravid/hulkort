@@ -1,5 +1,5 @@
 <h2>Your Statistics</h2>
-<% if !@commits.empty? %>
+<% unless @commits.empty? %>
 <p>
   Total Commits: <%= @user_commit_count %>
 </p>

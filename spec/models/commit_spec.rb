@@ -24,8 +24,8 @@ describe Commit do
       Factory.create(:commit)
       Factory.create(:commit, :created_at => 1.day.ago)
       Factory.create(:commit, :created_at => 1.day.ago)
-      Factory.create(:commit, :created_at => 3.day.ago)
-      Factory.create(:commit, :created_at => 4.day.ago)
+      Factory.create(:commit, :created_at => 3.days.ago)
+      Factory.create(:commit, :created_at => 4.days.ago)
 
       result = Commit.daily_commits(4)
 

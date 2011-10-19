@@ -27,7 +27,7 @@ Scenario: User can see his personal commit statistics
   And I should see "Total Commits: 5"
   And I should see my commits graph
 
-Scenario: User can see his personal commit statistics
+Scenario: User can see the global commit statistics
   Given I am signed in as a user using "mail@example.com"
   And I have 3 commits
   And I am on the homepage
