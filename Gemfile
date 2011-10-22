@@ -24,6 +24,7 @@ group :test do
   gem 'guard-rspec'
   gem 'guard-cucumber'
   gem 'database_cleaner'
+  gem 'libnotify'
 end
 
 group :test, :development do
