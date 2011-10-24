@@ -7,3 +7,15 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$(function() {
+
+  /* highlight current navigation item */
+  var currentPath = window.location.pathname;
+  console.log(currentPath);
+  $('#user-navigation a').each(function() {
+    var linkPath = $(this).attr('href').toString().split('?')[0];
+    if(linkPath == currentPath)
+      $(this).addClass('highlight');
+  });
+});

@@ -42,8 +42,23 @@ body {
 nav#user-navigation {
   float: right;
   color: rgba(27, 43, 57, 1);
-  font-weight: 200;
+  font-weight: 300;
   margin-top: 12px;
+  a { 
+    text-decoration: none;
+    border-bottom: 1px solid $grey-blue;
+    &:hover, &:active {
+      border-color: $light-blue;
+    }
+    
+    &.highlight { 
+      font-weight: 700;
+      border-bottom: 1px solid $grey-blue;
+      &:hover, &:active {
+        color: $blue;
+      }
+    }
+  }
 }
 
 h2 {
@@ -93,14 +108,12 @@ code {
 
 a {
   color: $blue;
-}
-
-a:link, a:visited {
-  color: $blue;
-}
-
-a:hover, a:active {
-  color: $light-blue;
+  &:link, &:visited {
+    color: $blue;
+  }
+  &:hover, &:active {
+    color: $light-blue;
+  }
 }
 
 form {
