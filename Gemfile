@@ -5,6 +5,7 @@ gem 'jquery-rails'
 gem 'pg'
 gem 'clearance'
 gem 'airbrake'
+gem 'unicorn'
 
 group :assets do
   gem 'sass-rails'
