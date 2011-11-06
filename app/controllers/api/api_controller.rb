@@ -1,5 +1,6 @@
 class Api::ApiController < ApplicationController
   before_filter :authorize
+  skip_before_filter :ensure_domain
 
   private
   def authorize
