@@ -3,6 +3,7 @@ Hulkort::Application.routes.draw do
 
   namespace :api do
     resources :commits, :only => [:create]
+    resources :repositories, :only => [:create]
   end
 
   root :to => 'pages#index'

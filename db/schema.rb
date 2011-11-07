@@ -11,13 +11,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111009172104) do
+ActiveRecord::Schema.define(:version => 20111106110259) do
 
   create_table "commits", :force => true do |t|
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "repositories", :force => true do |t|
+    t.string   "name",       :null => false
+    t.string   "shortcode"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "repositories", ["name", "user_id"], :name => "index_repositories_on_name_and_user_id", :unique => true
+  add_index "repositories", ["shortcode"], :name => "index_repositories_on_shortcode", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "email"
