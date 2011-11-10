@@ -1,6 +1,6 @@
 class Repository < ActiveRecord::Base
-
   belongs_to :user
+  has_many :commits
   before_validation :generate_shortcode, :on => :create
 
   validates :name, :presence => true
