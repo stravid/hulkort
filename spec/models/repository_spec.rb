@@ -7,6 +7,7 @@ describe Repository do
     subject { FactoryGirl.create(:repository) }
 
     it { should belong_to(:user) }
+    it { should have_many(:commits) }
     it { should validate_presence_of(:name) }
     it { should validate_presence_of(:shortcode) }
     

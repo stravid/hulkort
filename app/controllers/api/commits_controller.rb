@@ -1,7 +1,17 @@
 class Api::CommitsController < Api::ApiController
   def create
-    @user.commits.create
-    
+    if params[:repository].present?
+      repository = @user.repositories.find_by_id(params[:repository])
+
+      if repository.present?
+        @user.commits.create(:repository_id => repository.id)
+      else
+        head :error and return
+      end
+    else
+      @user.commits.create
+    end
+
     head :ok
   end
 end

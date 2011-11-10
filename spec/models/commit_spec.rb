@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Commit do
   it { should belong_to(:user) }
+  it { should belong_to(:repository) }
   
   it "should limit creation time correctly" do
     7.times { Commit.create }

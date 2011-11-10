@@ -1,5 +1,6 @@
 class Commit < ActiveRecord::Base
   belongs_to :user
+  belongs_to :repository
   scope :limit_time_to, lambda { |timestamp| where('created_at >= ?', timestamp) }
 
   def self.daily_commits(number = 30)
