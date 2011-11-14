@@ -6,6 +6,7 @@ gem 'pg'
 gem 'clearance'
 gem 'airbrake'
 gem 'unicorn'
+gem 'heroku'
 
 group :assets do
   gem 'sass-rails'
