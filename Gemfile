@@ -6,7 +6,6 @@ gem 'pg'
 gem 'clearance'
 gem 'airbrake'
 gem 'unicorn'
-gem 'heroku'
 
 group :assets do
   gem 'sass-rails'
@@ -33,4 +32,5 @@ group :test, :development do
   gem 'rspec-rails'
   gem 'shoulda'
   gem 'sqlite3'
+  gem 'heroku'
 end
