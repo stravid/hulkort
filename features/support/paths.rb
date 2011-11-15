@@ -21,7 +21,7 @@ module NavigationHelpers
       edit_user_path(current_user)
     when /the "(.*)" repository graph page/i
       repository = Repository.find_by_name($1)
-      url_for(:controller => 'graphs', :action => 'show', :shortcode => repository.shortcode)
+      graph_path(:shortcode => repository.shortcode)
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
