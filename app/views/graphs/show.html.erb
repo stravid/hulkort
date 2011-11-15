@@ -1,0 +1,6 @@
+<h2><%= @repository.name %></h2>
+<div id="repository-commits-graph">
+  <% @repository_daily_commits.each do |day| %>
+    <div style="height: <%= day['count'] * 5 + 1 %>px;"></div>
+  <% end %>
+</div>
