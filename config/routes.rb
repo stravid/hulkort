@@ -9,4 +9,6 @@ Hulkort::Application.routes.draw do
   root :to => 'pages#index'
 
   match '/sign_out' => 'sessions#destroy', :via => :delete, :as => 'sign_out'
+
+  get 'graphs/:shortcode' => 'graphs#show'
 end

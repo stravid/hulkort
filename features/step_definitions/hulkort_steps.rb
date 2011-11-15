@@ -30,3 +30,11 @@ end
 Then /^I should see the global commits graph$/ do
   page.should have_selector('div#global-commits-graph')
 end
+
+Then /^I should see the repository commits graph$/ do
+  page.should have_selector('div#repository-commits-graph')
+end
+
+Given /^there is a repository named "(.*)"$/ do |repository_name|
+  Repository.create(:name => repository_name)
+end
