@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails'
+gem 'rails', '3.1.10'
 gem 'jquery-rails'
 gem 'pg'
 gem 'clearance'
@@ -35,5 +35,4 @@ group :test, :development do
   gem 'rspec-rails'
   gem 'shoulda'
   gem 'sqlite3'
-  gem 'heroku'
 end
