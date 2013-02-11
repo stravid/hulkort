@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.10'
+gem 'rails', '3.1.11'
 gem 'jquery-rails'
 gem 'pg'
 gem 'clearance'
@@ -14,10 +14,6 @@ group :assets do
 end
 
 group :test do
-  group :darwin do
-    gem 'rb-fsevent', :require => false
-  end
-
   gem 'turn', '< 0.8.3', :require => false # Turn v0.8.3 has a wrong dependency on minitest
   gem 'capybara'
   gem 'launchy'
