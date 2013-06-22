@@ -8,7 +8,7 @@ describe Api::RepositoriesController do
 
     context do
       it "returns an error if name is not unique per user" do
-        name = Factory.next(:repository_name)
+        name = FactoryGirl.generate(:repository_name)
         post :create, :api_key => user.api_key, :name => name
         post :create, :api_key => user.api_key, :name => name
         should respond_with(:bad_request)
@@ -19,7 +19,7 @@ describe Api::RepositoriesController do
       before(:each) { @old_repository_count = user.repositories.count }
 
       it "can create a new repository" do
-        post :create, :api_key => user.api_key, :name => Factory.next(:repository_name)
+        post :create, :api_key => user.api_key, :name => FactoryGirl.generate(:repository_name)
 
         should respond_with(:created)
         should respond_with_content_type(:json)

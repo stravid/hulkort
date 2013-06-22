@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Commit do
   it { should belong_to(:user) }
   it { should belong_to(:repository) }
-  
+
   it "should limit creation time correctly" do
     7.times { Commit.create }
     @commit = Commit.first
@@ -22,11 +22,11 @@ describe Commit do
     end
 
     it "should return the correct count per day" do
-      Factory.create(:commit)
-      Factory.create(:commit, :created_at => 1.day.ago)
-      Factory.create(:commit, :created_at => 1.day.ago)
-      Factory.create(:commit, :created_at => 3.days.ago)
-      Factory.create(:commit, :created_at => 4.days.ago)
+      FactoryGirl.create(:commit)
+      FactoryGirl.create(:commit, :created_at => 1.day.ago)
+      FactoryGirl.create(:commit, :created_at => 1.day.ago)
+      FactoryGirl.create(:commit, :created_at => 3.days.ago)
+      FactoryGirl.create(:commit, :created_at => 4.days.ago)
 
       result = Commit.daily_commits(4)
 
