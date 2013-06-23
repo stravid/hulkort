@@ -19,7 +19,7 @@ group :test do
   gem 'cucumber-rails', '1.3.0', require: false
   gem 'shoulda-matchers', '~>1.0'
   gem 'factory_girl_rails'
-  gem 'spork', '> 0.9.0.rc'
+  gem 'spork', '> 1.0.0.rc'
   gem 'guard-spork'
   gem 'guard-rspec'
   gem 'guard-cucumber'
