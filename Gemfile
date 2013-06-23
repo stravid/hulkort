@@ -1,17 +1,15 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.13'
+gem 'rails', '4.0.0.rc2'
 
 gem 'jquery-rails', '2.1.4' # jQuery v1.8.3, supports rails 4.0
 gem 'clearance', '1.0.0.rc7'
 gem 'airbrake'
 gem 'unicorn'
 
-group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier',     '>= 1.0.3'
-end
+gem 'sass-rails', '~> 4.0.0.rc1'
+gem 'coffee-rails', '~> 4.0.0'
+gem 'uglifier', '>= 1.3.0'
 
 group :test do
   gem 'turn', require: false
@@ -30,7 +28,7 @@ end
 
 group :test, :development do
   gem 'rspec-rails', '~> 2.13'
-  gem 'sqlite3', '1.3.5'
+  gem 'sqlite3'
 end
 
 group :production do

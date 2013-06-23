@@ -10,5 +10,4 @@ describe UsersController do
       @current_user.commits.count.should equal(7)
     end
   end
-
 end

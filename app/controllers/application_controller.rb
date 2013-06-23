@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  include Clearance::Authentication
+  include Clearance::Controller
   protect_from_forgery
 
   before_filter :set_user_time_zone
@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
 
   def ensure_domain
     if request.env['HTTP_HOST'] == 'hulkort.herokuapp.com'
-      redirect_to "http://hulkort.com", :status => 301
+      redirect_to "http://hulkort.com", status: 301
     end
   end
 end

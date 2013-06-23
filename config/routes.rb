@@ -1,14 +1,16 @@
 Hulkort::Application.routes.draw do
-  resources :users, :only => [:edit, :update, :show]
+  root to: 'pages#index'
+
+  resources :users, only: [:edit, :update, :show]
 
   namespace :api do
-    resources :commits, :only => [:create]
-    resources :repositories, :only => [:create]
+    resources :commits, only: [:create]
+    resources :repositories, only: [:create]
   end
 
-  root :to => 'pages#index'
+  get 'graphs/:shortcode', to: 'graphs#show', as: :graph
 
-  match '/sign_out' => 'sessions#destroy', :via => :delete, :as => 'sign_out'
-
-  get 'graphs/:shortcode' => 'graphs#show', :as => 'graph'
+  # Define the 'as:' option different from the named route that clearance provides
+  # to prevent a naming conflict
+  delete '/sign_out', to: 'sessions#destroy', as: :signout
 end

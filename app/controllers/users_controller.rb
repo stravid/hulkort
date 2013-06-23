@@ -13,8 +13,13 @@ class UsersController < ApplicationController
   end
 
   def update
-    current_user.update_attributes(params[:user])
+    current_user.update_attributes(user_parameters)
 
-    redirect_to :action => :edit
+    redirect_to action: :edit
+  end
+
+private
+  def user_parameters
+    params.require(:user).permit(:time_zone)
   end
 end
