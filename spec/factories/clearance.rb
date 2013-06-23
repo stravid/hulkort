@@ -4,7 +4,7 @@ FactoryGirl.define do
   end
 
   factory :user do
-    email    { FactoryGirl.generate :email }
-    password { "password" }
+    email
+    password 'password'
   end
 end
