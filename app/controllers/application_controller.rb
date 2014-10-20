@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
 
   def ensure_domain
     if request.env['HTTP_HOST'] == 'hulkort.herokuapp.com'
-      redirect_to "http://hulkort.com", status: 301
+      redirect_to "http://www.hulkort.com", status: 301
     end
   end
 end

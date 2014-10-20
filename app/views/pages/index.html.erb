@@ -8,7 +8,7 @@
 <p>
   Simply make a <code>POST</code> request to track your commits:
 </p>
-<pre>http://hulkort.com/api/commits/?api_key=<%= display_api_key %></pre>
+<pre>http://www.hulkort.com/api/commits/?api_key=<%= display_api_key %></pre>
 <% unless current_user.present? %>
   <p>
     This is an example! Please <%= link_to "sign in", sign_in_path %> to see your personal URL and API key.
@@ -24,7 +24,7 @@
 mkdir ~/development/git-hooks
 cd ~/development/git-hooks
 echo '#!/bin/bash' >> post-commit
-echo 'curl -d "api_key=<%= display_api_key %>" http://hulkort.com/api/commits' >> post-commit
+echo 'curl -d "api_key=<%= display_api_key %>" http://www.hulkort.com/api/commits' >> post-commit
 
 <span># Set permissions so it can be executed</span>
 chmod 755 post-commit
